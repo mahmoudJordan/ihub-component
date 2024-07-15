@@ -1,0 +1,21 @@
+{
+  "distribution": {
+    "type": "docker",
+    "image": "mahmoudalsarhan/oih-bconnect-component"
+  },
+  "actions": {
+    "action": {
+      "main": "./src/actions/index.js",
+      "title": "call bconnect to save data",
+      "metadata": {
+        "recordUid": "String",
+        "oihUid": "String"
+      }
+    }
+  },
+  "name": "call_bConnect_dev",
+  "description": "call bconnect to save data",
+  "access": "public",
+  "isGlobal": false,
+  "active": false
+}

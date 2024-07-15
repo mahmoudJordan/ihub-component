@@ -1,0 +1,58 @@
+{
+  "name": "bconnect-connector",
+  "version": "1.0.0",
+  "description": "OIH bconnect connector",
+  "author": {
+    "name": "Wice GmbH",
+    "url": "https://www.wice.de"
+  },
+  "private": true,
+  "keywords": [
+    "template",
+    "example",
+    "adapter",
+    "oih"
+  ],
+  "scripts": {
+    "start": "source ./scripts/dns.sh && node --inspect=127.0.0.1:9229 ./src/internal/ferryman/runGlobal.js",
+    "start:container":"source ./initialize.sh && cd ./scripts && source ./env.sh && source ./copy-dependencies.sh && docker run -d --name temp-component ${IMAGE_NAME}",
+    "start-dns": "source ./dns.sh && node --inspect=127.0.0.1:9229 ./src/internal/ferryman/runGlobal.js",
+    "pretest": "eslint lib test --ext .js --ext .json --fix",
+    "test": "NODE_ENV=test mocha test/* --timeout 10000",
+    "test-watch": "NODE_ENV=test nodemon --exec \"npm test-mocha --debug-brk --inspect \"",
+    "test-mocha": "NODE_ENV=test mocha ./src/test/**/*.test.js ",
+    "image-deploy": "npm run config-shell && source  ./initialize.sh && cd ./scripts && source ./env.sh && source ./image-deploy.sh",
+    "image-deploy:local": "npm run config-shell && source ./initialize.sh && cd ./scripts && source ./env.sh && source ./image-deploy.sh true",
+    "config-shell" : "npm config set script-shell 'C:\\Program Files\\git\\bin\\bash.exe'",
+    "copy-internals" : "npm run config-shell && source ./initialize.sh && cd ./scripts && source ./env.sh && ./copy-dependencies.sh"
+  },
+  "engines": {
+    "node": ">=14.0.0",
+    "npm": ">=6.0.0"
+  },
+  "dependencies": {
+    "axios": "^1.6.7",
+    "dotenv": "^10.0.0",
+    "log4js": "^6.3.0",
+    "request": "^2.88.2",
+    "request-promise": "^4.2.6",
+    "rewire": "^7.0.0",
+    "winston": "^3.11.0"
+  },
+  "devDependencies": {
+    "chai": "^4.3.4",
+    "eslint": "^7.32.0",
+    "eslint-config-airbnb-base": "^14.2.1",
+    "eslint-plugin-import": "^2.23.4",
+    "eslint-plugin-json": "^2.1.2",
+    "eslint-plugin-mocha": "^8.0.0",
+    "mocha": "^9.1.3",
+    "nock": "^13.1.4",
+    "sinon": "^11.1.2"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:openintegrationhub/contacts-adapter-template.git"
+  },
+  "license": "Apache 2.0"
+}

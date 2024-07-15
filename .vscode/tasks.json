@@ -1,0 +1,22 @@
+{
+    "version": "2.0.0",
+    "tasks": [
+        {
+            "isBackground": true,
+            "label": "setup_debugging_session",
+            "type": "shell",
+            "command": "source ./initialize.sh && . ./scripts/env.sh && . ./scripts/setup-debugging-session.sh",
+            "problemMatcher": [],
+            
+        },
+        {
+            "label": "terminate_debugging_session",
+            "type": "shell",
+            "command": "kill $(lsof -t -i:9229)",
+            "problemMatcher": [],
+            "presentation": {
+              "reveal": "silent"
+            }
+          }
+    ]
+}
