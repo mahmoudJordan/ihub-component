@@ -1,0 +1,7 @@
+{
+    "mainEntry" : "index.js",
+    "launch_command" : "node index.js",
+    "ignorePatterns" : [
+        "node_modules"
+    ]
+}
